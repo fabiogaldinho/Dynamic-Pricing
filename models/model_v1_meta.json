@@ -1,0 +1,33 @@
+{
+    "version": "v1",
+    "description": "Baseline model trained after EDA and feature importance, with removal of low-impact feature `fuel_price_pct_change`. Used as benchmark for residual analysis phase.",
+    "trained_on": "2024-01-01 to 2024-12-31",
+    "validated_on": "2025-01-01 to 2025-02-28",
+    "tested_on": "2025-03-01 to 2025-04-30",
+    "features": [
+        "sell_value",
+        "sell_quantity_lag_7",
+        "rolling_std_sell_value",
+        "daily_balance",
+        "inventory_turnover",
+        "buy_quantity",
+        "inventory_lag_1",
+        "precipitation",
+        "incc_monthly_change",
+        "incc_lag_2_month",
+        "fuel_price_vs_buy_value",
+        "fuel_price_lag_60",
+        "is_weekend",
+        "days_until_holiday",
+        "month"
+    ],
+    "metrics_test_set": {
+        "MAE": 0.109,
+        "RMSE": 0.17,
+        "R2": 0.9928
+    },
+    "notebook_origin": "Modeling.ipynb",
+    "tag": "baseline_v1_after_feature_importance",
+    "created_by": "F\u00e1bio Galdino",
+    "created_at": "2025-06-15"
+}
