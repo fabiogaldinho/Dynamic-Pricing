@@ -35,7 +35,6 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 - **Visualization**: `matplotlib`;
 - **Hyperparameter Tuning**: `Optuna`.
 <br>
-<br>
 
 ## **PROJECT WORKFLOW**
 
@@ -67,7 +66,6 @@ This solution aims to serve as a robust foundation for real-time, automated pric
   - **Profit per unit** = profit / predicted quantity;
 - The optimal price is identified and plotted, with business constraints applied.
 <br>
-<br>
 
 ## **PROJECT STRUCTURE**
 
@@ -87,7 +85,6 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 - Optimal price simulation returned R$41.55 as the most profitable, compared to R$39.90 practiced;
 - Profit per unit improved from R$9.05 to R$11.60, with minimal impact on demand.
 <br>
-<br>
 
 ## **NEXT STEPS**
 
@@ -96,7 +93,6 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 - Simulate profit over 30-day fixed-price windows for negotiation planning;
 - Perform A/B testing comparing baseline and model-driven prices;
 - Monitor monthly drift and residual patterns to prevent overfitting.
-<br>
 <br>
 
 ## **AUTHOR**
