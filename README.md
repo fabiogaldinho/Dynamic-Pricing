@@ -17,12 +17,84 @@ By incorporating both internal operational metrics and exogenous market signals,
 
 The goal of this project is to develop a predictive pricing model capable of supporting dynamic pricing strategies in a retail environment. The model is designed to estimate optimal product prices by learning from both internal historical performance data and external contextual variables.
 
-Key objectives include:
-- Preprocessing and feature engineering to consolidate sales, cost, weather, inflation, and calendar data into a structured format suitable for modeling;
-- Exploration of price elasticity and its integration as a derived feature to inform pricing sensitivity;
-- Training supervised learning models to predict optimal selling prices that balance competitiveness and profitability;
-- Validation using appropriate cross-validation techniques, accounting for seasonality and potential data imbalance.
+Design a profit-optimized pricing recommendation model that:
+- Predicts expected product demand based on internal and external contextual variables;
+- Simulates total profit and profit per unit across a realistic range of prices;
+- Identifies the optimal price that maximizes revenue while preserving demand volume;
+- Integrates easily with real purchase events from the ERP system.
 
 This solution aims to serve as a robust foundation for real-time, automated pricing systems that respond dynamically to market conditions.
 <br>
 <br>
+
+## **LANGUAGES AND TOOLS**
+
+- **Programming Language**: Python;
+- **Data Handling**: `pandas`, `numpy`;
+- **Modeling**: `XGBoostRegressor`;
+- **Visualization**: `matplotlib`;
+- **Hyperparameter Tuning**: `Optuna`.
+<br>
+
+## **PROJECT WORKFLOW**
+
+### 1. Data Collection and Consolidation
+- Joined raw purchase, sales, and inventory data from the ERP system;
+- Added external context from weather APIs, INCC scraping, and ANP diesel prices;
+- Created a daily consolidated dataset from **2024-01-01 to 2025-04-30**.
+
+### 2. Data Cleaning and Preprocessing
+- Performed exploratory inspection of missing values across all sources;
+- Treated outliers individually based on business context;
+- Standardized column types, normalized date formats, and resolved inconsistencies across datasets;
+- Prepared a unified daily DataFrame for feature engineering and modeling.
+
+### 3. Feature Engineering
+- Created lagged demand, rolling volatility, inventory turnover and price differential indicators;
+- Engineered macroeconomic features;
+- Binned numerical features into quantiles to capture nonlinear effects.
+
+### 4. Modeling
+- Trained an `XGBoostRegressor` model with Optuna hyperparameter tuning;
+- Evaluated performance using MAE, RMSE, and WAPE;
+- Final model (v2) achieved a **WAPE of 8.3% on the test set**.
+
+### 5. Profit Simulation
+- Given a purchase date, the model generates all context features automatically;
+- A price range is simulated (e.g., R$25 to R$45), predicting demand and calculating:
+  - **Total profit** = (price - cost) × predicted quantity;
+  - **Profit per unit** = profit / predicted quantity;
+- The optimal price is identified and plotted, with business constraints applied.
+<br>
+
+## **PROJECT STRUCTURE**
+
+```bash
+├── data/                 
+├── models/
+├── notebooks/    
+├── visuals/       
+├── README.md
+└── requirements.txt
+```
+<br>
+
+## **RESULTS**
+
+- Model predicted demand with WAPE of 8.3%;
+- Optimal price simulation returned R$41.55 as the most profitable, compared to R$39.90 practiced;
+- Profit per unit improved from R$9.05 to R$11.60, with minimal impact on demand.
+<br>
+
+## **NEXT STEPS**
+
+- Begin weekly collection of competitor prices (local and major players);
+- Introduce constraints such as minimum margin and maximum price deviation;
+- Simulate profit over 30-day fixed-price windows for negotiation planning;
+- Perform A/B testing comparing baseline and model-driven prices;
+- Monitor monthly drift and residual patterns to prevent overfitting.
+<br>
+
+## **AUTHOR**
+
+**Fábio Galdino**
