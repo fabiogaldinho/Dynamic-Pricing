@@ -1,44 +1,42 @@
 {
     "version": "v2",
-    "description": "Refined model after residual analysis. Includes engineered features to capture behavioral patterns and removes low-impact features identified through error analysis.",
+    "description": "Refined and optimized model using residual analysis and WAPE as primary metric, followed by Optuna hyperparameter tuning. Final feature set includes engineered bins and relevant predictors retained through performance validation.",
     "trained_on": "2024-01-01 to 2024-12-31",
     "validated_on": "2025-01-01 to 2025-02-28",
     "tested_on": "2025-03-01 to 2025-04-30",
     "features": [
         "sell_value",
         "sell_quantity_lag_7",
+        "rolling_std_sell_value",
         "daily_balance",
         "inventory_turnover",
         "buy_quantity",
         "inventory_lag_1",
         "precipitation",
-        "incc_lag_2_month",
+        "incc_monthly_change",
         "fuel_price_vs_buy_value",
-        "fuel_price_lag_60",
         "is_weekend",
         "days_until_holiday",
         "month",
         "turnover_bin",
-        "lag_7_bin",
-        "is_positive_daily_balance",
-        "did_buy"
+        "lag_7_bin"
     ],
     "metrics_test_set": {
-        "MAE": 0.085,
-        "RMSE": 0.133,
-        "R2": 0.9956
+        "MAE": 0.087,
+        "RMSE": 0.134,
+        "R2": 0.9955,
+        "WAPE (%)": 8.322
     },
     "removed_features": [
-        "incc_monthly_change",
-        "rolling_std_sell_value"
+        "incc_lag_2_month",
+        "fuel_price_lag_60"
     ],
     "created_features": [
         "turnover_bin",
-        "is_positive_daily_balance",
-        "did_buy"
+        "lag_7_bin"
     ],
     "notebook_origin": "Modeling.ipynb",
-    "tag": "residual_analysis_v2",
+    "tag": "residual_analysis_v2_optuna",
     "created_by": "F\u00e1bio Galdino",
-    "created_at": "2025-06-15"
+    "created_at": "2025-06-16"
 }

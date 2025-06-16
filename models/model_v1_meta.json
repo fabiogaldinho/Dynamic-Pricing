@@ -24,7 +24,8 @@
     "metrics_test_set": {
         "MAE": 0.109,
         "RMSE": 0.17,
-        "R2": 0.9928
+        "R2": 0.9928,
+        "WAPE (%)": 12.271
     },
     "notebook_origin": "Modeling.ipynb",
     "tag": "baseline_v1_after_feature_importance",
