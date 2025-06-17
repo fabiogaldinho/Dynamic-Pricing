@@ -4,5 +4,4 @@ notebooks/00_Exporting_Data2.ipynb
 data/.DS_Store
 visuals/.DS_Store
 .DS_Store
-main.py
-scripts/
+/scripts/__pycache__
