@@ -4,4 +4,4 @@ notebooks/00_Exporting_Data2.ipynb
 data/.DS_Store
 visuals/.DS_Store
 .DS_Store
-/scripts/__pycache__
+src/context_feature_generator/__pycache__/
