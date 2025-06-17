@@ -32,7 +32,7 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 - **Programming Language**: Python;
 - **Data Handling**: `pandas`, `numpy`;
 - **Modeling**: `XGBoostRegressor`;
-- **Visualization**: `matplotlib`;
+- **Visualization**: `matplotlib`, `seaborn`;
 - **Hyperparameter Tuning**: `Optuna`.
 <br>
 
@@ -57,7 +57,7 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 ### 4. Modeling
 - Trained an `XGBoostRegressor` model with Optuna hyperparameter tuning;
 - Evaluated performance using MAE, RMSE, and WAPE;
-- Final model (v2) achieved a **WAPE of 8.3% on the test set**.
+- Final model (v2) achieved a **WAPE of 7.78% on the test set**.
 
 ### 5. Profit Simulation
 - Given a purchase date, the model generates all context features automatically;
@@ -81,7 +81,7 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 
 ## **RESULTS**
 
-- Model predicted demand with WAPE of 8.3%;
+- Model predicted demand with WAPE of 7.78%;
 - Optimal price simulation returned R$41.55 as the most profitable, compared to R$39.90 practiced;
 - Profit per unit improved from R$9.05 to R$11.60, with minimal impact on demand.
 <br>

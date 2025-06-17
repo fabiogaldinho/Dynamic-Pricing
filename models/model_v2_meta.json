@@ -14,24 +14,27 @@
         "inventory_lag_1",
         "precipitation",
         "incc_monthly_change",
-        "fuel_price_vs_buy_value",
+        "fuel_price_lag_60",
         "is_weekend",
         "days_until_holiday",
         "month",
+        "no_rain",
         "turnover_bin",
         "lag_7_bin"
     ],
     "metrics_test_set": {
-        "MAE": 0.087,
-        "RMSE": 0.134,
-        "R2": 0.9955,
-        "WAPE (%)": 8.322
+        "MAE": 0.082,
+        "RMSE": 0.122,
+        "R2": 0.9963,
+        "WAPE (%)": 7.785
     },
     "removed_features": [
+        "fuel_price_vs_buy_value",
         "incc_lag_2_month",
-        "fuel_price_lag_60"
+        "fuel_price_pct_change"
     ],
     "created_features": [
+        "no_rain",
         "turnover_bin",
         "lag_7_bin"
     ],

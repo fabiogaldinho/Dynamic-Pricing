@@ -22,10 +22,10 @@
         "month"
     ],
     "metrics_test_set": {
-        "MAE": 0.109,
-        "RMSE": 0.17,
-        "R2": 0.9928,
-        "WAPE (%)": 12.271
+        "MAE": 0.124,
+        "RMSE": 0.19,
+        "R2": 0.991,
+        "WAPE (%)": 13.27
     },
     "notebook_origin": "Modeling.ipynb",
     "tag": "baseline_v1_after_feature_importance",
