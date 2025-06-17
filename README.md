@@ -74,6 +74,12 @@ pip install -r requirements.txt
 ```bash
 python src/main.py
 ```
+
+### 6. Deactivate the virtual environment (when done)
+
+```bash
+deactivate
+```
 Make sure you're using Python 3.11 for compatibility.
 <br>
 <br>
