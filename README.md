@@ -35,6 +35,54 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 - **Visualization**: `matplotlib`, `seaborn`;
 - **Hyperparameter Tuning**: `Optuna`.
 <br>
+<br>
+
+## **HOW TO RUN THIS PROJECT LOCALLY**
+
+### 1. Clone this repository
+
+```bash
+git clone https://github.com/fabiogaldinho/Dynamic-Pricing.git
+cd Dynamic-Pricing
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+### 3. Activate the virtual environment
+
+- On Windows:
+  ```bash
+  .\venv\Scripts\activate
+  ```
+- On Mac/Linux:
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 4. Install project dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the main script
+
+```bash
+python src/main.py
+```
+
+### 6. Deactivate the virtual environment (when done)
+
+```bash
+deactivate
+```
+Make sure you're using Python 3.11 for compatibility.
+<br>
+<br>
 
 ## **PROJECT WORKFLOW**
 
