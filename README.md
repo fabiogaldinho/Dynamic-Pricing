@@ -43,7 +43,7 @@ This solution aims to serve as a robust foundation for real-time, automated pric
 
 ```bash
 git clone https://github.com/fabiogaldinho/Dynamic-Pricing.git
-cd your-repo
+cd Dynamic-Pricing
 ```
 
 ### 2. Create a virtual environment
