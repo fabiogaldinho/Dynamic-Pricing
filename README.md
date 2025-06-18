@@ -120,7 +120,19 @@ Make sure you're using Python 3.11 for compatibility.
 ```bash
 ├── data/                 
 ├── models/
-├── notebooks/    
+├── notebooks/
+├── src/
+│   ├── main.py
+│   ├── context_feature_generator/   
+│   │   ├── __init__.py
+│   │   ├── generate_context_features.py
+│   │   ├── get_holiday_data.py
+│   │   ├── get_precipitation_data.py
+│   │   ├── get_incc_data.py
+│   │   ├── get_fuel_data.py
+│   │   ├── get_sell_data.py
+│   │   ├── get_buy_data.py
+│   └── └── get_inventory_data.py 
 ├── visuals/       
 ├── README.md
 └── requirements.txt
