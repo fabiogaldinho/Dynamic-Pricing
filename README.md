@@ -80,7 +80,7 @@ python src/main.py
 ```bash
 deactivate
 ```
-Make sure you're using Python 3.11 for compatibility.
+Make sure you're using [Python 3.11](https://www.python.org/downloads/release/python-3110/) for compatibility.
 <br>
 <br>
 
