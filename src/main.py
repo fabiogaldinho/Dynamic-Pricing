@@ -14,6 +14,7 @@ except ImportError:
 from tqdm import tqdm
 from context_feature_generator.generate_context_features import generate_context_features
 from context_feature_generator.get_buy_data import get_buy_data
+from context_feature_generator.get_sell_data import get_sell_data
 
 def simulate_profit(sell_price, context_features, model, buy_price):
     input_features = context_features.copy()
@@ -41,6 +42,7 @@ def plot_optimal(prices, profits, demands, optimal_price, buy_price, profit_per_
     ax.set_facecolor("0.85")
     ax.spines.top.set_visible(False)
     ax.set_ylim(0,max(profits)+100)
+    ax.set_xlim(prices[0],prices[np.argmax(profits)]+4)
 
 
     # Optimal Price
@@ -74,7 +76,7 @@ def plot_optimal(prices, profits, demands, optimal_price, buy_price, profit_per_
 
 
 if __name__ == "__main__":
-    print("Available purchase dates with recorded product purchases:\n")
+    print("\nAvailable purchase dates with recorded product purchases:\n")
     
     df = get_buy_data()
     df = df[((df['date'] >= '2025-04-01') & (df['date'] < '2025-06-01')) & (df['buy_quantity'] > 0)].reset_index(drop = True).copy()
@@ -87,7 +89,14 @@ if __name__ == "__main__":
     purchase_date = df.loc[choice, 'date']
     buy_price = df.loc[choice, 'buy_value']
     
-    suggested_price = float(input("\nEnter the suggested selling price (e.g., 39.90): "))
+
+    df = get_sell_data()
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.sort_values(by = 'date', ascending = False)
+    df = df[df['date'] <= purchase_date].reset_index(drop = True).copy()
+    suggested_price = df.loc[0, 'sell_value']
+
+    print(f"\nMost recent selling price: R$ {suggested_price}")
 
     print(f"\nGenerating context features for {purchase_date}...")
     context = generate_context_features(purchase_date)
@@ -100,7 +109,7 @@ if __name__ == "__main__":
 
 
     progress.set_description("Running predictions")
-    price_range = np.arange(suggested_price - 15, suggested_price + 5, 0.05)
+    price_range = np.arange(suggested_price - 15, suggested_price + 15, 0.05)
 
     profits = []
     demands = []
@@ -108,12 +117,11 @@ if __name__ == "__main__":
 
     for price in price_range:
         p, d = simulate_profit(price, context, model, buy_price)
-        if (p > 0):
+        if ((p > 0) & (price < 45)):
             profits.append(p)
             demands.append(d)
             prices.append(price)
     progress.update(1)
-
 
     progress.set_description("Plotting profit curve")
     optimal_price = prices[np.argmax(profits)]
@@ -121,6 +129,10 @@ if __name__ == "__main__":
     optimal_demand = demands[np.argmax(profits)]
     profit_per_unit = optimal_profit / optimal_demand
 
-    plot_optimal(prices, profits, demands, optimal_price, buy_price, profit_per_unit, progress)
-
-
+    plot_optimal(prices[0:np.argmax(profits)+10],
+                 profits[0:np.argmax(profits)+10],
+                 demands[0:np.argmax(profits)+10],
+                 optimal_price,
+                 buy_price,
+                 profit_per_unit,
+                 progress)
